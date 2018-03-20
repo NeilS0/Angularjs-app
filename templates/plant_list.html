@@ -1,0 +1,39 @@
+
+
+<div class="row offset-1">
+   
+<!--    <div ng-repeat="plant in plantList | orderBy: 'name'" ng-if="strPlantSearch == null || strPlantSearch == ''" class="col-sm-6 col-md-3 "> -->
+      <div ng-repeat="plant in plantList | orderBy: 'name'" ng-if="strPlantSearch == null || strPlantSearch == ''" class="col-md-1">
+      
+      <a ui-sref="plantitem({plantid: plant.id})">
+         <!-- <div class="thumbnail"> -->
+         <div>
+            <img ng-src="{{plant.image}}" alt="{{plant.name}}">
+         </div>
+         
+         <div class="caption">
+            <h5>{{plant.name}}</h5>
+            <!-- <p>{{plant.shortDescription}}</p>  -->        
+         </div>
+      </a>
+   </div>
+
+
+<!--    <div ng-repeat="plant in plantList | filter: strPlantSearch | orderBy: 'name'" ng-if="filter = strPlantSearch" class="col-sm-6 col-md-3 "> -->
+      <div ng-repeat="plant in plantList | filter: strPlantSearch | orderBy: 'name'" ng-if="filter = strPlantSearch" class="col-md-1">
+      
+      <a ui-sref="plantitem({plantid: plant.id})">
+         <!-- <div class="thumbnail"> -->
+         <div>
+            <img ng-src="{{plant.image}}" alt="{{plant.name}}">
+         </div>
+         
+         <div class="caption">
+            <h5>{{plant.name}}</h5>
+            <!-- <p>{{plant.shortDescription}}</p> -->         
+         </div>
+      </a>
+   </div>
+   
+</div>
+

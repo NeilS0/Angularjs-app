@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="theplantguru">
+<head>
+  <meta charset="UTF-8">  <!-- I think we should use unicode instead ?-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>The Plant Product</title>
+
+  <!-- for getting screen with/height etc -->
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico"> -->
+  <!-- <link rel="manifest" href="manifest.json"> -->
+
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="lib/css/angular-material.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="lib/css/animations.css" rel="stylesheet"> -->
+  <!-- our styling -->
+   <link href="css/styles.css" rel="stylesheet">
+   <!-- <link href="css/angular-topnav.css" rel="stylesheet"> -->
+   
+
+</head>
+
+<body ng-controller="theplantguruMainCtrl" class="ng-cloak">
+
+<div class="container-fluid" xstyle="border:1px solid blue;">
+   <div class="row">
+
+   <!--
+      <md-progress-circular xng-disabled="!vm.activated" class="md-hue-2" md-diameter="20px"></md-progress-circular>
+      <md-progress-circular xng-disabled="!vm.activated" class="md-accent" md-diameter="40"></md-progress-circular>
+      <md-progress-circular xng-disabled="!vm.activated" class="md-accent md-hue-1" md-diameter="60"></md-progress-circular>
+      <md-progress-circular xng-disabled="!vm.activated" class="md-warn md-hue-3" md-diameter="70"></md-progress-circular>
+      <md-progress-circular xng-disabled="!vm.activated" md-diameter="96"></md-progress-circular>
+      -->
+<!--        <style>.active { color: red; font-weight: bold; }</style>
+<a ui-sref="plantitem({plantid: 1})" ui-sref-active="active">test</a> -->
+<!-- <ui-view></ui-view> -->
+
+
+      <!-- OPTION MENU -->
+      <md-sidenav class="md-sidenav-right" md-component-id="right"
+                   md-disable-backdrop md-whiteframe="4" style="background-color: #324251; position: fixed;">
+
+         <md-toolbar class="md-theme-indigo" style="background-color: #324251;">
+           <h1 class="md-toolbar-tools">Filter Options</h1>
+         </md-toolbar>
+
+         <md-content layout-margin>
+         <!--
+            <md-button ng-click="showAlert()" class="md-accent">
+               About
+            </md-button>
+         -->
+            <md-button ng-click="toggleRight()" class="md-accent">
+               Save
+            </md-button>
+            <md-button ng-click="toggleRight()" class="md-accent">
+               Cancel
+            </md-button>
+
+            <md-checkbox xxng-checked="" xxng-click="">
+                <span xxng-if="">Agaves</span>
+            </md-checkbox>
+            <md-checkbox xxng-checked="" xxng-click="">
+                <span xxng-if="">Succulents</span>
+            </md-checkbox>
+         </md-content>
+
+      </md-sidenav>
+
+<!-- NOTE: need to make the backdropped fixed position-->
+      <!-- MAIN MENU / NAVIGATION -->
+      <md-sidenav class="md-sidenav-left" md-component-id="left" 
+                   xxmd-disable-backdrop md-whiteframe="4" style="background-color: #324251; position: fixed;">
+
+         <md-toolbar class="md-theme-indigo" style="background-color: #324251;">
+           <h1 class="md-toolbar-tools">Main Menu</h1>
+         </md-toolbar>
+
+         <md-content layout-margin>
+            <md-button ng-click="about()" class="md-accent">
+               About
+            </md-button>
+         </md-content>
+
+      </md-sidenav>
+
+
+      <!-- TOOLBAR -->
+      <md-toolbar class="md-hue-2 _md _md-toolbar-transitions">
+         <div class="md-toolbar-tools" style="background-color: #324251; position: fixed; z-index: 3; /*this is for the blue coming over*/">
+            <!-- main menu button -->
+            <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="toggleLeft()">
+               <md-icon md-svg-icon="assets/icons/menumenu.svg"></md-icon>
+            </md-button>
+
+            <!-- title -->
+            <h2 flex="" md-truncate="" class="md-truncate flex">The Plant Guru</h2>
+
+            <!-- option button -->
+            <md-button class="md-icon-button" aria-label="More" ng-click="toggleRight()">
+               <md-icon md-svg-icon="assets/icons/moremore.svg"></md-icon>
+            </md-button>
+         </div>
+      </md-toolbar>
+
+      <!-- SEARCH BAR -->
+      <md-toolbar md-scroll-shrink Ang-if="true" Ang-controller="TitleController" style="z-index: 1;">
+         <div class="md-toolbar-tools" style="background-color: white; position: fixed;">
+         <!--<CENTER>-->
+            <md-input-container md-no-float class="md-block">
+               <md-icon md-svg-src="search.png"></md-icon>
+               <input ng-model="strPlantSearch" type="text" placeholder="Search for plant">
+            </md-input-container>
+           <!--</CENTER>-->
+         </div>
+      </md-toolbar>
+        
+
+      <!-- OUR PLANT LIST -->
+      <div class="row">
+         <div class="col-12" xstyle="border:1px solid red;">         
+
+               <!-- angular will update this with our templates -->
+               <!-- <div ng-view class="ng-cloak"></div> -->
+               <ui-view></ui-view> <!-- we now use ui-route -->
+               <!-- <ng-view></ng-view> --> <!-- we update this with the templates -->
+         </div>      
+      </div>    
+   </div> <!-- eo main row -->
+
+
+  <!-- Angular JS -->
+  <script src="lib/js/angular.min.js"></script>
+  <!-- <script src="lib/js/angular-route.min.js"></script> --><!-- this is needed for routing , angular core does not come standard with it -->
+  <script src="lib/js/angular-ui-router.js"></script> 
+ 
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="lib/js/angular-animate.min.js"></script>
+  <script src="lib/js/angular-aria.min.js"></script>
+  <script src="lib/js/angular-messages.min.js"></script>
+  <!-- Angular Material Library -->
+  <script src="lib/js/angular-material.min.js"></script>
+
+
+  <!-- our code -->
+  <script src="js/app.js"></script>  <!-- create the module of our app -->
+  <script src="js/controllers.js"></script>  <!-- add controllers to our app -->
+  <script src="js/services.js"></script>  <!-- add services to our app -->
+
+</body>
+</html>
